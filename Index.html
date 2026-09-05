@@ -1,0 +1,3403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Parallel Design | Crafted Interiors</title>
+
+<meta name="description"
+      content="Parallel Design creates refined residential and commercial interiors by Pritesh Suthar. Thoughtful spaces, timeless design and exceptional craftsmanship.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --black:#0b0b09;
+    --black2:#12120f;
+    --black3:#191814;
+
+    --ivory:#f5f0e7;
+    --ivory2:#e8e0d2;
+
+    --gold:#b89558;
+    --gold2:#d2b675;
+
+    --sage:#66705e;
+
+    --muted:#9b978e;
+
+    --serif:'Cormorant Garamond',serif;
+    --sans:'DM Sans',sans-serif;
+
+    --max:1280px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--ivory);
+    font-family:var(--sans);
+    overflow-x:hidden;
+}
+
+img{
+    display:block;
+    width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+::selection{
+    background:var(--gold);
+    color:var(--black);
+}
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:var(--black);
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    width:60px;
+    height:60px;
+
+    margin:auto;
+
+    border:1px solid var(--gold);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.loader-logo span{
+    font-family:var(--serif);
+    font-size:23px;
+    color:var(--gold2);
+}
+
+.loader-line{
+    width:100px;
+    height:1px;
+
+    background:rgba(184,149,88,.25);
+
+    margin:25px auto 12px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.loader-line::after{
+    content:"";
+
+    position:absolute;
+    left:-100%;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:var(--gold);
+
+    animation:loaderLine 1.5s ease forwards;
+}
+
+.loader-text{
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#77736c;
+}
+
+@keyframes loaderLine{
+
+    to{
+        left:0;
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    padding:25px 5%;
+
+    transition:.4s ease;
+}
+
+.header.scrolled{
+    padding:14px 5%;
+
+    background:rgba(11,11,9,.94);
+
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+    max-width:var(--max);
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+
+    border:1px solid rgba(210,182,117,.8);
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.logo-mark::before,
+.logo-mark::after{
+    content:"";
+
+    position:absolute;
+
+    width:27px;
+    height:1px;
+
+    background:var(--gold2);
+
+    transform:rotate(-45deg);
+}
+
+.logo-mark::before{
+    top:12px;
+    left:8px;
+}
+
+.logo-mark::after{
+    bottom:12px;
+    right:8px;
+}
+
+.logo-p,
+.logo-d{
+    position:absolute;
+
+    font-family:var(--serif);
+    font-size:14px;
+
+    z-index:2;
+
+    color:var(--ivory);
+}
+
+.logo-p{
+    left:8px;
+    top:7px;
+}
+
+.logo-d{
+    right:7px;
+    bottom:6px;
+
+    color:var(--gold2);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-main{
+    font-family:var(--serif);
+
+    font-size:24px;
+    font-weight:500;
+
+    letter-spacing:.5px;
+
+    line-height:.85;
+}
+
+.logo-sub{
+    margin-top:7px;
+
+    font-size:7px;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#aaa59b;
+}
+
+.logo-founder{
+    margin-top:5px;
+
+    font-size:6px;
+    letter-spacing:1.7px;
+
+    color:rgba(210,182,117,.72);
+
+    text-transform:uppercase;
+
+    line-height:1;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:38px;
+}
+
+.nav-links a{
+    position:relative;
+
+    font-size:10px;
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:#c7c1b6;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:var(--gold);
+
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-cta{
+    padding:12px 19px;
+
+    border:1px solid rgba(210,182,117,.6);
+
+    color:var(--gold2)!important;
+}
+
+.nav-cta:hover{
+    background:var(--gold);
+
+    color:var(--black)!important;
+}
+
+.nav-cta::after{
+    display:none;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.menu-toggle{
+    display:none;
+
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:transparent;
+
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    display:block;
+
+    width:17px;
+    height:1px;
+
+    background:white;
+
+    margin:4px auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,8,6,.94) 0%,
+            rgba(8,8,6,.73) 43%,
+            rgba(8,8,6,.30) 100%
+        ),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+
+    transform:scale(1.04);
+
+    animation:heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom{
+
+    from{
+        transform:scale(1.04);
+    }
+
+    to{
+        transform:scale(1);
+    }
+
+}
+
+.hero-content{
+    width:min(var(--max),90%);
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+
+    padding-top:70px;
+}
+
+.hero-kicker{
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    font-size:9px;
+    letter-spacing:4px;
+
+    color:var(--gold2);
+
+    text-transform:uppercase;
+
+    margin-bottom:28px;
+}
+
+.hero-kicker span{
+    width:38px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+.hero h1{
+    font-family:var(--serif);
+
+    font-size:clamp(64px,9vw,145px);
+
+    font-weight:300;
+
+    line-height:.78;
+
+    letter-spacing:-4px;
+
+    max-width:900px;
+}
+
+.hero h1 em{
+    color:var(--gold2);
+
+    font-style:italic;
+}
+
+.hero-description{
+    max-width:450px;
+
+    margin-top:40px;
+
+    color:#bdb8ad;
+
+    font-size:13px;
+
+    line-height:1.9;
+
+    font-weight:300;
+}
+
+.hero-actions{
+    display:flex;
+
+    gap:16px;
+
+    margin-top:36px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 24px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.35s;
+}
+
+.btn-gold{
+    background:var(--gold);
+
+    color:var(--black);
+}
+
+.btn-gold:hover{
+    background:var(--gold2);
+
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.3);
+
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:var(--gold);
+
+    color:var(--gold2);
+}
+
+.hero-side{
+    position:absolute;
+
+    right:5%;
+    bottom:45px;
+
+    writing-mode:vertical-rl;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#89847a;
+}
+
+
+/* =========================================================
+   COMMON SECTIONS
+========================================================= */
+
+.section{
+    padding:130px 5%;
+}
+
+.container{
+    max-width:var(--max);
+
+    margin:auto;
+}
+
+.section-label{
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    color:var(--gold2);
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+.section-label::before{
+    content:"";
+
+    width:35px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+.section-title{
+    font-family:var(--serif);
+
+    font-weight:300;
+
+    font-size:clamp(45px,6vw,82px);
+
+    line-height:.9;
+}
+
+.section-title em{
+    color:var(--gold2);
+
+    font-style:italic;
+}
+
+.section-intro{
+    max-width:520px;
+
+    color:#9d988e;
+
+    line-height:1.9;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   STUDIO
+========================================================= */
+
+.studio{
+    background:var(--ivory);
+
+    color:var(--black);
+}
+
+.studio-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:100px;
+
+    align-items:center;
+}
+
+.studio .section-label{
+    color:#80683c;
+}
+
+.studio .section-label::before{
+    background:#a98a50;
+}
+
+.studio .section-title em{
+    color:#967746;
+}
+
+.studio-text{
+    margin-top:35px;
+
+    color:#68645c;
+
+    font-size:14px;
+
+    line-height:2;
+}
+
+.studio-signature{
+    margin-top:35px;
+
+    font-family:var(--serif);
+
+    font-size:31px;
+
+    font-style:italic;
+
+    color:#25231f;
+}
+
+.studio-visual{
+    position:relative;
+
+    height:590px;
+}
+
+.studio-visual img{
+    height:100%;
+
+    object-fit:cover;
+}
+
+.studio-frame{
+    position:absolute;
+
+    left:-25px;
+    bottom:-25px;
+
+    width:70%;
+    height:70%;
+
+    border:1px solid rgba(184,149,88,.55);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    background:var(--black2);
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.stats-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+    padding:50px 25px;
+
+    text-align:center;
+
+    border-right:1px solid rgba(255,255,255,.08);
+}
+
+.stat:last-child{
+    border-right:none;
+}
+
+.stat-number{
+    font-family:var(--serif);
+
+    font-size:50px;
+
+    font-weight:300;
+
+    color:var(--gold2);
+}
+
+.stat-label{
+    margin-top:7px;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#858078;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    background:var(--gold);
+
+    color:var(--black);
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    padding:16px 0;
+}
+
+.marquee-track{
+    display:inline-block;
+
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-family:var(--serif);
+
+    font-size:22px;
+
+    font-style:italic;
+
+    margin:0 28px;
+}
+
+@keyframes marquee{
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    background:var(--black);
+}
+
+.project-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    margin-bottom:70px;
+}
+
+.project-header .section-intro{
+    margin-bottom:5px;
+}
+
+.project-grid{
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    gap:25px;
+}
+
+.project-card{
+    position:relative;
+
+    overflow:hidden;
+
+    background:#151511;
+}
+
+.project-card.large{
+    height:700px;
+}
+
+.project-card.small{
+    height:335px;
+}
+
+.project-card + .project-card{
+    margin-top:30px;
+}
+
+.project-card img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:1s ease;
+}
+
+.project-card:hover img{
+    transform:scale(1.06);
+}
+
+.project-overlay{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:end;
+
+    padding:35px;
+
+    background:
+        linear-gradient(
+            transparent 30%,
+            rgba(0,0,0,.78) 100%
+        );
+}
+
+.project-category{
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--gold2);
+
+    margin-bottom:10px;
+}
+
+.project-name{
+    font-family:var(--serif);
+
+    font-size:34px;
+
+    font-weight:400;
+}
+
+.project-location{
+    margin-top:4px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    color:#bbb6ac;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+    background:var(--black3);
+}
+
+.services-head{
+    max-width:750px;
+}
+
+.services-grid{
+    margin-top:75px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    border-top:1px solid rgba(255,255,255,.12);
+}
+
+.service{
+    min-height:300px;
+
+    padding:42px 30px;
+
+    border-right:1px solid rgba(255,255,255,.1);
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+    transition:.4s;
+}
+
+.service:nth-child(3n){
+    border-right:none;
+}
+
+.service:hover{
+    background:#202019;
+}
+
+.service-number{
+    font-family:var(--serif);
+
+    font-size:20px;
+
+    color:var(--gold2);
+}
+
+.service h3{
+    font-family:var(--serif);
+
+    font-size:31px;
+
+    font-weight:400;
+
+    margin-top:55px;
+}
+
+.service p{
+    margin-top:15px;
+
+    color:#8e8a82;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   FOUNDER
+========================================================= */
+
+.founder{
+    background:var(--ivory);
+
+    color:var(--black);
+}
+
+.founder-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:100px;
+
+    align-items:center;
+}
+
+.founder-card{
+    min-height:480px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181813,
+            #0d0d0b
+        );
+
+    position:relative;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:45px;
+
+    overflow:hidden;
+}
+.founder-photo{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    opacity:.78;
+    z-index:0;
+}
+
+.founder-card::before{
+    content:"PD";
+
+    position:absolute;
+
+    top:-45px;
+    right:-20px;
+
+    font-family:var(--serif);
+    font-size:220px;
+
+    color:rgba(184,149,88,.07);
+
+    line-height:1;
+
+    z-index:1;
+}
+
+.founder-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        to top,
+        rgba(8,8,6,.95) 0%,
+        rgba(8,8,6,.55) 45%,
+        rgba(8,8,6,.12) 100%
+    );
+
+    z-index:1;
+    pointer-events:none;
+}
+
+.founder-line{
+    position:absolute;
+    top:45px;
+    left:45px;
+
+    width:45px;
+    height:1px;
+
+    background:var(--gold);
+
+    z-index:3;
+}
+
+.founder-card-inner{
+    position:relative;
+    z-index:3;
+}
+.founder-card::before{
+    content:"PD";
+
+    position:absolute;
+
+    top:-45px;
+    right:-20px;
+
+    font-family:var(--serif);
+
+    font-size:220px;
+
+    color:rgba(184,149,88,.07);
+
+    line-height:1;
+}
+
+.founder-line{
+    position:absolute;
+
+    top:45px;
+    left:45px;
+
+    width:45px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+.founder-card-inner{
+    position:relative;
+
+    z-index:2;
+}
+
+.founder-role{
+    color:var(--gold2);
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.founder-name{
+    font-family:var(--serif);
+
+    color:var(--ivory);
+
+    font-size:50px;
+
+    font-weight:400;
+
+    margin-top:12px;
+}
+
+.founder-brand{
+    color:#89857b;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-top:8px;
+}
+
+.founder-content .section-title{
+    color:var(--black);
+}
+
+.founder-content .section-title em{
+    color:#967746;
+}
+
+.founder-quote{
+    font-family:var(--serif);
+
+    font-size:29px;
+
+    line-height:1.3;
+
+    color:#302e29;
+
+    margin-top:35px;
+}
+
+.founder-text{
+    max-width:560px;
+
+    margin-top:25px;
+
+    color:#6e6a61;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+.founder-sign{
+    margin-top:35px;
+
+    font-family:var(--serif);
+
+    font-size:26px;
+
+    font-style:italic;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.philosophy{
+    min-height:650px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            rgba(9,9,7,.75),
+            rgba(9,9,7,.86)
+        ),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=90")
+        center/cover fixed;
+}
+
+.philosophy-content{
+    max-width:800px;
+}
+
+.philosophy-title{
+    font-family:var(--serif);
+
+    font-size:clamp(48px,7vw,100px);
+
+    font-weight:300;
+
+    line-height:.88;
+}
+
+.philosophy-title em{
+    color:var(--gold2);
+}
+
+.philosophy-copy{
+    margin-top:35px;
+
+    max-width:550px;
+
+    color:#b3aea4;
+
+    line-height:2;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    background:var(--ivory2);
+
+    color:var(--black);
+}
+
+.gallery .section-label{
+    color:#80683c;
+}
+
+.gallery .section-label::before{
+    background:#a98a50;
+}
+
+.gallery-grid{
+    margin-top:65px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    gap:15px;
+}
+
+.gallery-item{
+    height:430px;
+
+    overflow:hidden;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(5){
+    margin-top:70px;
+}
+
+.gallery-item img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.8s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.05);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:var(--black);
+}
+
+.contact-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:100px;
+}
+
+.contact-title{
+    font-family:var(--serif);
+
+    font-size:clamp(50px,6vw,85px);
+
+    font-weight:300;
+
+    line-height:.9;
+}
+
+.contact-title em{
+    color:var(--gold2);
+}
+
+.contact-copy{
+    margin-top:30px;
+
+    max-width:430px;
+
+    color:#8f8b83;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+.contact-details{
+    margin-top:40px;
+}
+
+.contact-detail{
+    display:flex;
+
+    gap:18px;
+
+    align-items:flex-start;
+
+    margin-bottom:23px;
+}
+
+.contact-icon{
+    width:35px;
+    height:35px;
+
+    border:1px solid rgba(184,149,88,.4);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold2);
+
+    font-size:11px;
+}
+
+.contact-detail small{
+    display:block;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#68645c;
+
+    margin-bottom:5px;
+}
+
+.contact-detail span,
+.contact-detail a{
+    font-size:12px;
+
+    color:#c5c0b7;
+}
+
+.contact-form{
+    border:1px solid rgba(255,255,255,.1);
+
+    padding:45px;
+
+    background:#10100d;
+}
+
+.form-title{
+    font-family:var(--serif);
+
+    font-size:34px;
+
+    margin-bottom:30px;
+}
+
+.field{
+    margin-bottom:20px;
+}
+
+.field label{
+    display:block;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#79756d;
+
+    margin-bottom:8px;
+}
+
+.field input,
+.field textarea{
+    width:100%;
+
+    border:none;
+
+    border-bottom:1px solid rgba(255,255,255,.14);
+
+    background:transparent;
+
+    color:white;
+
+    padding:10px 0;
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.field input:focus,
+.field textarea:focus{
+    border-bottom-color:var(--gold);
+}
+
+.field textarea{
+    min-height:100px;
+
+    resize:vertical;
+}
+
+.submit-btn{
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    margin-top:10px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:#080806;
+
+    padding:65px 5% 30px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.footer-grid{
+    max-width:var(--max);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.5fr 1fr 1fr;
+
+    gap:60px;
+
+    padding-bottom:60px;
+}
+
+.footer-brand{
+    font-family:var(--serif);
+
+    font-size:34px;
+}
+
+.footer-brand span{
+    color:var(--gold2);
+}
+
+.footer-tagline{
+    margin-top:15px;
+
+    max-width:300px;
+
+    color:#77736b;
+
+    font-size:11px;
+
+    line-height:1.8;
+}
+
+.footer-heading{
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--gold2);
+
+    margin-bottom:18px;
+}
+
+.footer-links{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.footer-links a{
+    color:#89857c;
+
+    font-size:11px;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    max-width:var(--max);
+
+    margin:auto;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#55524c;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+}
+
+.footer-founder{
+    color:#706b62;
+}
+
+.footer-founder strong{
+    color:var(--gold2);
+
+    font-weight:400;
+}
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+========================================================= */
+
+.whatsapp{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ffffff;
+
+    z-index:9998;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.35),
+        0 0 0 0 rgba(37,211,102,.45);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    animation:whatsappPulse 2.2s infinite;
+}
+
+.whatsapp svg{
+    width:31px;
+    height:31px;
+
+    fill:#ffffff;
+
+    display:block;
+}
+
+.whatsapp:hover{
+    transform:translateY(-5px) scale(1.06);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 0 8px rgba(37,211,102,.10);
+}
+
+@keyframes whatsappPulse{
+
+    0%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.35),
+            0 0 0 0 rgba(37,211,102,.45);
+    }
+
+    70%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.35),
+            0 0 0 12px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.35),
+            0 0 0 0 rgba(37,211,102,0);
+    }
+
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .header{
+        padding:18px 5%;
+    }
+
+    .nav-links{
+        position:fixed;
+
+        top:0;
+        right:-100%;
+
+        width:80%;
+        max-width:340px;
+
+        height:100vh;
+
+        background:#10100d;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        gap:30px;
+
+        transition:.4s;
+
+        border-left:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-links.open{
+        right:0;
+    }
+
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .menu-toggle{
+        display:block;
+
+        position:relative;
+
+        z-index:1002;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero-side{
+        display:none;
+    }
+
+    .studio-grid,
+    .founder-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+
+        gap:55px;
+    }
+
+    .studio-visual{
+        height:500px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-card.large{
+        height:550px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .service:nth-child(3n){
+        border-right:1px solid rgba(255,255,255,.1);
+    }
+
+    .service:nth-child(2n){
+        border-right:none;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(5){
+        margin-top:0;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .logo-main{
+        font-size:20px;
+    }
+
+    .logo-mark{
+        width:36px;
+        height:36px;
+    }
+
+    .logo-founder{
+        font-size:5.5px;
+    }
+
+    .hero-content{
+        padding-top:60px;
+    }
+
+    .hero h1{
+        font-size:66px;
+
+        line-height:.82;
+    }
+
+    .hero-description{
+        font-size:12px;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .section{
+        padding:90px 6%;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:35px 15px;
+    }
+
+    .stat-number{
+        font-size:40px;
+    }
+
+    .project-header{
+        display:block;
+    }
+
+    .project-header .section-intro{
+        margin-top:25px;
+    }
+
+    .project-card.large{
+        height:470px;
+    }
+
+    .project-card.small{
+        height:300px;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service{
+        border-right:none!important;
+
+        min-height:260px;
+    }
+
+    .founder-card{
+        min-height:420px;
+
+        padding:32px;
+    }
+
+    .founder-name{
+        font-size:43px;
+    }
+
+    .founder-quote{
+        font-size:25px;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item{
+        height:390px;
+    }
+
+    .contact-form{
+        padding:30px 25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+    .whatsapp{
+        right:18px;
+        bottom:18px;
+
+        width:48px;
+        height:48px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PRELOADER
+===================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-logo">
+            <span>PD</span>
+        </div>
+
+        <div class="loader-line"></div>
+
+        <div class="loader-text">
+            Parallel Design
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header" id="header">
+
+    <nav class="nav">
+
+        <a href="#home" class="logo">
+
+            <div class="logo-mark">
+
+                <span class="logo-p">P</span>
+                <span class="logo-d">D</span>
+
+            </div>
+
+            <div class="logo-text">
+
+                <div class="logo-main">
+                    Parallel Design
+                </div>
+
+                <div class="logo-sub">
+                    Crafted Interiors
+                </div>
+
+                <div class="logo-founder">
+                    By Pritesh Suthar
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#home">Home</a>
+
+            <a href="#studio">Studio</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#services">Services</a>
+
+            <a href="#founder">Founder</a>
+
+            <a href="#contact" class="nav-cta">
+                Start a Project
+            </a>
+
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+
+            <span></span>
+
+            Interior Architecture · India
+
+        </div>
+
+
+        <h1>
+
+            Spaces<br>
+
+            with <em>meaning.</em>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Parallel Design creates refined interiors where
+            architecture, materials and emotion come together
+            in perfect balance.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a href="#projects" class="btn btn-gold">
+                Explore Projects
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Begin a Conversation
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-side">
+
+        Crafted with intention · Parallel Design
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STUDIO
+===================================================== -->
+
+<section class="section studio" id="studio">
+
+    <div class="container studio-grid">
+
+
+        <div class="reveal">
+
+            <div class="section-label">
+                The Studio
+            </div>
+
+
+            <h2 class="section-title">
+
+                Design that<br>
+
+                feels <em>timeless.</em>
+
+            </h2>
+
+
+            <p class="studio-text">
+
+                Parallel Design is an interior design studio
+                focused on creating sophisticated, functional
+                and deeply personal spaces. Every project begins
+                with understanding the people behind the space.
+
+            </p>
+
+
+            <p class="studio-text">
+
+                From concept to completion, we bring together
+                architecture, materials, lighting and craftsmanship
+                to create interiors that remain relevant beyond
+                passing trends.
+
+            </p>
+
+
+            <div class="studio-signature">
+
+                Parallel by design.
+
+            </div>
+
+        </div>
+
+
+        <div class="studio-visual reveal">
+
+            <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=90"
+                alt="Luxury interior designed by Parallel Design"
+            >
+
+            <div class="studio-frame"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                01
+            </div>
+
+            <div class="stat-label">
+                Design Philosophy
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                ∞
+            </div>
+
+            <div class="stat-label">
+                Creative Possibilities
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                360°
+            </div>
+
+            <div class="stat-label">
+                Design Approach
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                100%
+            </div>
+
+            <div class="stat-label">
+                Personalised
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>Architecture</span>
+        <span>Interiors</span>
+        <span>Materials</span>
+        <span>Light</span>
+        <span>Craftsmanship</span>
+        <span>Living</span>
+
+        <span>Architecture</span>
+        <span>Interiors</span>
+        <span>Materials</span>
+        <span>Light</span>
+        <span>Craftsmanship</span>
+        <span>Living</span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section class="section projects" id="projects">
+
+    <div class="container">
+
+
+        <div class="project-header reveal">
+
+            <div>
+
+                <div class="section-label">
+                    Selected Work
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Spaces we've<br>
+
+                    <em>shaped.</em>
+
+                </h2>
+
+            </div>
+
+
+            <p class="section-intro">
+
+                A curated selection of residential and commercial
+                environments designed around character, comfort
+                and contemporary elegance.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="project-grid">
+
+
+            <div class="project-card large reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1500&q=90"
+                    alt="Luxury residential interior"
+                >
+
+
+                <div class="project-overlay">
+
+                    <div class="project-category">
+                        Residential
+                    </div>
+
+                    <div class="project-name">
+                        The Quiet Residence
+                    </div>
+
+                    <div class="project-location">
+                        Ahmedabad · Gujarat
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+
+                <div class="project-card small reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90"
+                        alt="Contemporary living room"
+                    >
+
+
+                    <div class="project-overlay">
+
+                        <div class="project-category">
+                            Residential
+                        </div>
+
+                        <div class="project-name">
+                            House No. 27
+                        </div>
+
+                        <div class="project-location">
+                            Surat · Gujarat
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="project-card small reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=90"
+                        alt="Premium commercial interior"
+                    >
+
+
+                    <div class="project-overlay">
+
+                        <div class="project-category">
+                            Commercial
+                        </div>
+
+                        <div class="project-name">
+                            The Workspace
+                        </div>
+
+                        <div class="project-location">
+                            Vadodara · Gujarat
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section services" id="services">
+
+    <div class="container">
+
+
+        <div class="services-head reveal">
+
+            <div class="section-label">
+                What We Do
+            </div>
+
+
+            <h2 class="section-title">
+
+                From vision<br>
+
+                to <em>reality.</em>
+
+            </h2>
+
+        </div>
+
+
+
+        <div class="services-grid">
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    01
+                </div>
+
+                <h3>
+                    Interior Design
+                </h3>
+
+                <p>
+
+                    Complete interior design solutions shaped
+                    around your lifestyle, personality and vision.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    02
+                </div>
+
+                <h3>
+                    Space Planning
+                </h3>
+
+                <p>
+
+                    Intelligent layouts that balance movement,
+                    functionality, proportion and visual harmony.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    03
+                </div>
+
+                <h3>
+                    Materials & Styling
+                </h3>
+
+                <p>
+
+                    Carefully selected materials, textures,
+                    furniture, lighting and finishes that define
+                    the character of every space.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    04
+                </div>
+
+                <h3>
+                    Residential Interiors
+                </h3>
+
+                <p>
+
+                    Bespoke homes designed to feel warm, personal,
+                    sophisticated and effortlessly livable.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    05
+                </div>
+
+                <h3>
+                    Commercial Interiors
+                </h3>
+
+                <p>
+
+                    Brand-conscious environments that communicate
+                    identity while supporting productivity and growth.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service reveal">
+
+                <div class="service-number">
+                    06
+                </div>
+
+                <h3>
+                    Turnkey Execution
+                </h3>
+
+                <p>
+
+                    From the first concept to the final detail,
+                    we provide a coordinated design and execution
+                    experience.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOUNDER
+===================================================== -->
+
+<section class="section founder" id="founder">
+
+    <div class="container founder-grid">
+
+
+        <div class="founder-card reveal">
+<img src="pritesh.jpg" alt="Pritesh Suthar" class="founder-photo">
+            <div class="founder-line"></div>
+
+            <div class="founder-card-inner">
+
+                <div class="founder-role">
+                    Founder & Owner
+                </div>
+
+
+                <div class="founder-name">
+                    Pritesh Suthar
+                </div>
+
+
+                <div class="founder-brand">
+                    Parallel Design
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="founder-content reveal">
+
+            <div class="section-label">
+                The Founder
+            </div>
+
+
+            <h2 class="section-title">
+
+                Creating spaces<br>
+
+                with <em>purpose.</em>
+
+            </h2>
+
+
+            <p class="founder-quote">
+
+                “We don't simply design spaces.
+                We create environments that reflect
+                the people who live, work and grow in them.”
+
+            </p>
+
+
+            <p class="founder-text">
+
+                Founded by Pritesh Suthar, Parallel Design
+                is built around a simple belief — exceptional
+                interiors should not only look beautiful,
+                they should feel personal.
+
+            </p>
+
+
+            <p class="founder-text">
+
+                Every project is approached with curiosity,
+                precision and a deep respect for proportion,
+                materials and craftsmanship.
+
+            </p>
+
+
+            <div class="founder-sign">
+                Pritesh Suthar
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PHILOSOPHY
+===================================================== -->
+
+<section class="philosophy">
+
+    <div class="container">
+
+        <div class="philosophy-content reveal">
+
+
+            <div class="section-label">
+                Our Philosophy
+            </div>
+
+
+            <h2 class="philosophy-title">
+
+                Less noise.<br>
+
+                More <em>meaning.</em>
+
+            </h2>
+
+
+            <p class="philosophy-copy">
+
+                We believe luxury isn't about excess.
+                It is about proportion, craftsmanship,
+                thoughtful details and the feeling a space
+                leaves behind.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section class="section gallery">
+
+    <div class="container">
+
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Visual Journal
+            </div>
+
+
+            <h2 class="section-title">
+
+                Details make<br>
+
+                the <em>difference.</em>
+
+            </h2>
+
+        </div>
+
+
+
+        <div class="gallery-grid">
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=90"
+                    alt="Luxury interior detail"
+                >
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=90"
+                    alt="Modern luxury home"
+                >
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=90"
+                    alt="Elegant interior design"
+                >
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=90"
+                    alt="Contemporary interior"
+                >
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=90"
+                    alt="Designer living space"
+                >
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1000&q=90"
+                    alt="Premium interior design"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section contact" id="contact">
+
+    <div class="container contact-grid">
+
+
+        <div class="reveal">
+
+
+            <div class="section-label">
+                Let's Create
+            </div>
+
+
+            <h2 class="contact-title">
+
+                Your space<br>
+
+                deserves a<br>
+
+                <em>story.</em>
+
+            </h2>
+
+
+            <p class="contact-copy">
+
+                Tell us about your project, your vision and
+                the space you want to transform. We would
+                love to begin a conversation.
+
+            </p>
+
+
+            <div class="contact-details">
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Email
+                        </small>
+
+                        <a href="mailto:info@paralleldesign.in">
+                            info@paralleldesign.in
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Phone
+                        </small>
+
+                        <a href="tel:+919876543210">
+                            +91 98765 43210
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ⌖
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Studio
+                        </small>
+
+                        <span>
+                            Gujarat · India
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <form class="contact-form reveal"
+              id="contactForm">
+
+
+            <div class="form-title">
+                Start a Conversation
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+91"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Tell Us About Your Project
+                </label>
+
+                <textarea
+                    name="message"
+                    placeholder="Tell us about your space, location and requirements..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-gold submit-btn">
+
+                Send Enquiry
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="footer-brand">
+
+                Parallel <span>Design</span>
+
+            </div>
+
+
+            <p class="footer-tagline">
+
+                Crafted interiors. Thoughtful spaces.
+                Designed with intention.
+
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-heading">
+                Explore
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#studio">
+                    Studio
+                </a>
+
+                <a href="#projects">
+                    Projects
+                </a>
+
+                <a href="#services">
+                    Services
+                </a>
+
+                <a href="#founder">
+                    Founder
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <div class="footer-heading">
+                Connect
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="mailto:info@paralleldesign.in">
+                    Email
+                </a>
+
+                <a href="tel:+919876543210">
+                    Call
+                </a>
+
+                <a
+                    href="https://wa.me/919876543210"
+                    target="_blank"
+                    rel="noopener">
+
+                    WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <div>
+
+            © 2026 Parallel Design.
+            All rights reserved.
+
+        </div>
+
+
+        <div class="footer-founder">
+
+            Founded by
+            <strong>Pritesh Suthar</strong>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+    href="https://wa.me/919876543210"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp"
+    aria-label="Chat with Parallel Design on WhatsApp">
+
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.25.59 4.36 1.69 6.19L3.1 28.9l6.86-1.75A12.73 12.73 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.35c-2.04 0-4.04-.55-5.77-1.59l-.41-.25-4.07 1.04 1.06-3.96-.27-.43A10.58 10.58 0 1 1 16 26.55Zm5.8-7.91c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.36-.5-2.59-1.6-.96-.86-1.61-1.92-1.8-2.24-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.07 1.3 3.28c.16.21 2.24 3.42 5.43 4.79.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.16-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/>
+    </svg>
+
+</a>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        const loader =
+            document.getElementById("loader");
+
+        if(loader){
+            loader.classList.add("hide");
+        }
+
+    },700);
+
+});
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const header =
+    document.getElementById("header");
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 60){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+if(menuToggle && navLinks){
+
+    menuToggle.addEventListener("click",function(){
+
+        navLinks.classList.toggle("open");
+
+    });
+
+
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(function(link){
+
+            link.addEventListener("click",function(){
+
+                navLinks.classList.remove("open");
+
+            });
+
+        });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(function(entry){
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("active");
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(function(element){
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+
+if(contactForm){
+
+    contactForm.addEventListener(
+        "submit",
+        function(event){
+
+            event.preventDefault();
+
+
+            const button =
+                contactForm.querySelector("button");
+
+
+            button.textContent =
+                "Thank You — We'll Be In Touch";
+
+
+            button.style.background =
+                "#66705e";
+
+            button.style.color =
+                "#ffffff";
+
+
+            contactForm.reset();
+
+
+            setTimeout(function(){
+
+                button.textContent =
+                    "Send Enquiry";
+
+                button.style.background =
+                    "";
+
+                button.style.color =
+                    "";
+
+            },5000);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SMOOTH ANCHOR SCROLL
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(function(anchor){
+
+        anchor.addEventListener(
+            "click",
+            function(event){
+
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
+
+
+                if(!target){
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                const headerHeight =
+                    document.getElementById("header")
+                    .offsetHeight;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top
+                    +
+                    window.scrollY
+                    -
+                    headerHeight;
+
+
+                window.scrollTo({
+
+                    top:targetPosition,
+
+                    behavior:"smooth"
+
+                });
+
+            }
+        );
+
+    });
+
+</script>
+
+
+</body>
+</html>
