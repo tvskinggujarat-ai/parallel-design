@@ -858,11 +858,8 @@ textarea{
 
 .project-header{
     display:flex;
-
     justify-content:space-between;
-
     align-items:end;
-
     margin-bottom:70px;
 }
 
@@ -872,92 +869,238 @@ textarea{
 
 .project-grid{
     display:grid;
-
-    grid-template-columns:1.15fr .85fr;
-
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:25px;
 }
 
 .project-card{
     position:relative;
-
     overflow:hidden;
-
     background:#151511;
+    min-height:520px;
+    cursor:pointer;
 }
 
-.project-card.large{
-    height:700px;
-}
-
-.project-card.small{
-    height:335px;
-}
-
-.project-card + .project-card{
-    margin-top:30px;
+.project-card:first-child{
+    grid-column:span 2;
+    min-height:620px;
 }
 
 .project-card img{
+    width:100%;
     height:100%;
-
-    object-fit:cover;
-
+    object-fit:contain;
+    background:#151511;
     transition:1s ease;
 }
 
 .project-card:hover img{
-    transform:scale(1.06);
+    transform:scale(1.025);
 }
 
 .project-overlay{
     position:absolute;
-
     inset:0;
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:end;
-
     padding:35px;
-
     background:
         linear-gradient(
-            transparent 30%,
-            rgba(0,0,0,.78) 100%
+            transparent 35%,
+            rgba(0,0,0,.85) 100%
         );
 }
 
 .project-category{
     font-size:8px;
-
     letter-spacing:3px;
-
     text-transform:uppercase;
-
     color:var(--gold2);
-
     margin-bottom:10px;
 }
 
 .project-name{
     font-family:var(--serif);
-
-    font-size:34px;
-
+    font-size:38px;
     font-weight:400;
 }
 
 .project-location{
-    margin-top:4px;
-
+    margin-top:5px;
     font-size:9px;
-
     letter-spacing:2px;
-
     color:#bbb6ac;
+}
+
+.project-count{
+    position:absolute;
+    top:20px;
+    right:20px;
+    padding:9px 13px;
+    background:rgba(11,11,9,.72);
+    border:1px solid rgba(210,182,117,.35);
+    backdrop-filter:blur(10px);
+    color:var(--gold2);
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.projects-loading{
+    grid-column:1 / -1;
+    padding:80px 20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+    color:#8e8a82;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.projects-error{
+    grid-column:1 / -1;
+    padding:60px 20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+    color:#8e8a82;
+}
+
+.projects-error strong{
+    display:block;
+    color:var(--gold2);
+    font-family:var(--serif);
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+
+/* =========================================================
+   PROJECT LIGHTBOX
+========================================================= */
+
+.project-lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(5,5,4,.96);
+    z-index:10000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.project-lightbox.open{
+    display:flex;
+}
+
+.lightbox-inner{
+    position:relative;
+    width:min(1100px,94vw);
+    height:min(85vh,800px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.lightbox-image{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:-45px;
+    right:0;
+    width:38px;
+    height:38px;
+    border:1px solid rgba(255,255,255,.25);
+    background:transparent;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.lightbox-prev,
+.lightbox-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.45);
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.lightbox-prev{
+    left:15px;
+}
+
+.lightbox-next{
+    right:15px;
+}
+
+.lightbox-title{
+    position:absolute;
+    bottom:-42px;
+    left:0;
+    color:#aaa59b;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   PROJECT RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-card:first-child{
+        grid-column:auto;
+    }
+
+    .project-card{
+        min-height:500px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .project-card,
+    .project-card:first-child{
+        min-height:390px;
+    }
+
+    .project-overlay{
+        padding:25px;
+    }
+
+    .project-name{
+        font-size:31px;
+    }
+
+    .project-count{
+        top:15px;
+        right:15px;
+    }
+
+    .project-lightbox{
+        padding:15px;
+    }
+
 }
 
 
@@ -2291,10 +2434,13 @@ textarea{
      PROJECTS
 ===================================================== -->
 
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
 <section class="section projects" id="projects">
 
     <div class="container">
-
 
         <div class="project-header reveal">
 
@@ -2303,7 +2449,6 @@ textarea{
                 <div class="section-label">
                     Selected Work
                 </div>
-
 
                 <h2 class="section-title">
 
@@ -2314,7 +2459,6 @@ textarea{
                 </h2>
 
             </div>
-
 
             <p class="section-intro">
 
@@ -2327,88 +2471,12 @@ textarea{
         </div>
 
 
+        <!-- PROJECTS WILL LOAD AUTOMATICALLY -->
 
-        <div class="project-grid">
+        <div class="project-grid" id="projectGrid">
 
-
-<div class="project-grid">
-
-    <div class="project-card large reveal">
-        <img src="Ahmedabad%20Hotel.png" alt="Ahmedabad Hotel">
-
-        <div class="project-overlay">
-            <div class="project-category">Hospitality</div>
-            <div class="project-name">Ahmedabad Hotel</div>
-            <div class="project-location">Ahmedabad · Gujarat</div>
-        </div>
-    </div>
-
-</div>
-
-                </div>
-
-            </div>
-
-
-
-            <div>
-
-
-                <div class="project-card small reveal">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90"
-                        alt="Contemporary living room"
-                    >
-
-
-                    <div class="project-overlay">
-
-                        <div class="project-category">
-                            Residential
-                        </div>
-
-                        <div class="project-name">
-                            House No. 27
-                        </div>
-
-                        <div class="project-location">
-                            Surat · Gujarat
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="project-card small reveal">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=90"
-                        alt="Premium commercial interior"
-                    >
-
-
-                    <div class="project-overlay">
-
-                        <div class="project-category">
-                            Commercial
-                        </div>
-
-                        <div class="project-name">
-                            The Workspace
-                        </div>
-
-                        <div class="project-location">
-                            Vadodara · Gujarat
-                        </div>
-
-                    </div>
-
-                </div>
-
-
+            <div class="projects-loading">
+                Loading projects...
             </div>
 
         </div>
@@ -2416,6 +2484,51 @@ textarea{
     </div>
 
 </section>
+
+
+<!-- =====================================================
+     PROJECT LIGHTBOX
+===================================================== -->
+
+<div class="project-lightbox" id="projectLightbox">
+
+    <div class="lightbox-inner">
+
+        <button
+            class="lightbox-close"
+            id="lightboxClose"
+            aria-label="Close">
+            ×
+        </button>
+
+        <button
+            class="lightbox-prev"
+            id="lightboxPrev"
+            aria-label="Previous">
+            ‹
+        </button>
+
+        <img
+            class="lightbox-image"
+            id="lightboxImage"
+            src=""
+            alt="Project image">
+
+        <button
+            class="lightbox-next"
+            id="lightboxNext"
+            aria-label="Next">
+            ›
+        </button>
+
+        <div
+            class="lightbox-title"
+            id="lightboxTitle">
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -3281,7 +3394,478 @@ revealElements.forEach(function(element){
 
 });
 
+/* =========================================================
+   AUTOMATIC PROJECTS FROM GITHUB
+========================================================= */
 
+const projectGrid =
+    document.getElementById("projectGrid");
+
+const GITHUB_PROJECTS_URL =
+    "https://api.github.com/repos/tvskinggujarat-ai/parallel-design/contents/images";
+
+let currentProjectImages = [];
+let currentProjectIndex = 0;
+
+
+/* Escape HTML safely */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* Convert folder name into readable title */
+
+function formatProjectName(name){
+
+    return name
+        .replace(/[-_]+/g," ")
+        .replace(/\s+/g," ")
+        .trim()
+        .replace(/\b\w/g,function(letter){
+            return letter.toUpperCase();
+        });
+
+}
+
+
+/* Detect image files */
+
+function isImageFile(name){
+
+    return /\.(jpg|jpeg|png|webp|gif)$/i.test(name);
+
+}
+
+
+/* Load all projects */
+
+async function loadProjects(){
+
+    if(!projectGrid){
+        return;
+    }
+
+    try{
+
+        const response =
+            await fetch(GITHUB_PROJECTS_URL);
+
+        if(!response.ok){
+            throw new Error("Unable to access project folder.");
+        }
+
+        const folders =
+            await response.json();
+
+
+        const projectFolders =
+            folders.filter(function(item){
+
+                return item.type === "dir";
+
+            });
+
+
+        if(projectFolders.length === 0){
+
+            projectGrid.innerHTML = `
+                <div class="projects-error">
+                    <strong>No Projects Yet</strong>
+                    Add your first project inside the images folder.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        projectGrid.innerHTML = "";
+
+
+        for(
+            const folder of projectFolders
+        ){
+
+            try{
+
+                const folderResponse =
+                    await fetch(folder.url);
+
+                if(!folderResponse.ok){
+                    continue;
+                }
+
+                const files =
+                    await folderResponse.json();
+
+
+                const images =
+                    files
+                        .filter(function(file){
+
+                            return (
+                                file.type === "file" &&
+                                isImageFile(file.name)
+                            );
+
+                        })
+                        .sort(function(a,b){
+
+                            return a.name.localeCompare(
+                                b.name,
+                                undefined,
+                                {
+                                    numeric:true,
+                                    sensitivity:"base"
+                                }
+                            );
+
+                        });
+
+
+                if(images.length === 0){
+                    continue;
+                }
+
+
+                const projectName =
+                    formatProjectName(folder.name);
+
+
+                const imageUrls =
+                    images.map(function(image){
+
+                        return image.download_url;
+
+                    });
+
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "project-card reveal";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${escapeHTML(imageUrls[0])}"
+                        alt="${escapeHTML(projectName)}"
+                        loading="lazy"
+                    >
+
+                    <div class="project-count">
+                        ${images.length}
+                        ${images.length === 1 ? "Image" : "Images"}
+                    </div>
+
+                    <div class="project-overlay">
+
+                        <div class="project-category">
+                            Interior Design
+                        </div>
+
+                        <div class="project-name">
+                            ${escapeHTML(projectName)}
+                        </div>
+
+                        <div class="project-location">
+                            Parallel Design
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                card.addEventListener(
+                    "click",
+                    function(){
+
+                        openProjectGallery(
+                            imageUrls,
+                            projectName
+                        );
+
+                    }
+                );
+
+
+                projectGrid.appendChild(card);
+
+
+                /* Activate reveal animation */
+
+                requestAnimationFrame(function(){
+
+                    setTimeout(function(){
+
+                        card.classList.add("active");
+
+                    },100);
+
+                });
+
+
+            }catch(error){
+
+                console.warn(
+                    "Could not load project:",
+                    folder.name,
+                    error
+                );
+
+            }
+
+        }
+
+
+        if(projectGrid.children.length === 0){
+
+            projectGrid.innerHTML = `
+                <div class="projects-error">
+                    <strong>No Images Found</strong>
+                    Add JPG, PNG or WEBP images inside your project folder.
+                </div>
+            `;
+
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "Project loading error:",
+            error
+        );
+
+
+        projectGrid.innerHTML = `
+            <div class="projects-error">
+                <strong>Projects Could Not Load</strong>
+                Please check your GitHub images folder.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   PROJECT LIGHTBOX
+========================================================= */
+
+const projectLightbox =
+    document.getElementById("projectLightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+const lightboxPrev =
+    document.getElementById("lightboxPrev");
+
+const lightboxNext =
+    document.getElementById("lightboxNext");
+
+
+function openProjectGallery(
+    images,
+    title
+){
+
+    currentProjectImages =
+        images;
+
+    currentProjectIndex =
+        0;
+
+    lightboxTitle.textContent =
+        title;
+
+    showProjectImage();
+
+    projectLightbox.classList.add("open");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function showProjectImage(){
+
+    if(!currentProjectImages.length){
+        return;
+    }
+
+    lightboxImage.src =
+        currentProjectImages[
+            currentProjectIndex
+        ];
+
+    lightboxImage.alt =
+        lightboxTitle.textContent +
+        " project image";
+
+}
+
+
+function closeProjectGallery(){
+
+    projectLightbox.classList.remove("open");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+function nextProjectImage(){
+
+    if(!currentProjectImages.length){
+        return;
+    }
+
+    currentProjectIndex =
+        (
+            currentProjectIndex + 1
+        ) %
+        currentProjectImages.length;
+
+    showProjectImage();
+
+}
+
+
+function previousProjectImage(){
+
+    if(!currentProjectImages.length){
+        return;
+    }
+
+    currentProjectIndex =
+        (
+            currentProjectIndex -
+            1 +
+            currentProjectImages.length
+        ) %
+        currentProjectImages.length;
+
+    showProjectImage();
+
+}
+
+
+if(lightboxClose){
+
+    lightboxClose.addEventListener(
+        "click",
+        closeProjectGallery
+    );
+
+}
+
+
+if(lightboxNext){
+
+    lightboxNext.addEventListener(
+        "click",
+        nextProjectImage
+    );
+
+}
+
+
+if(lightboxPrev){
+
+    lightboxPrev.addEventListener(
+        "click",
+        previousProjectImage
+    );
+
+}
+
+
+if(projectLightbox){
+
+    projectLightbox.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target ===
+                projectLightbox
+            ){
+
+                closeProjectGallery();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* Keyboard controls */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            !projectLightbox ||
+            !projectLightbox.classList.contains("open")
+        ){
+            return;
+        }
+
+
+        if(event.key === "Escape"){
+
+            closeProjectGallery();
+
+        }
+
+
+        if(event.key === "ArrowRight"){
+
+            nextProjectImage();
+
+        }
+
+
+        if(event.key === "ArrowLeft"){
+
+            previousProjectImage();
+
+        }
+
+    }
+);
+
+
+/* Start project loader */
+
+loadProjects();
 /* =========================================================
    CONTACT FORM
 ========================================================= */
